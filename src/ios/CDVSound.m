@@ -15,8 +15,8 @@
  under the License.
  */
 
-#import "CDVFile.h"
 #import "CDVSound.h"
+#import "CDVFile.h"
 #import <AVFoundation/AVFoundation.h>
 #include <math.h>
 
@@ -761,16 +761,15 @@ BOOL keepAvAudioSessionAlwaysActive = NO;
         [audioFile.recorder stop];
         audioFile.recorder = nil;
       }
-    // get the audioSession and set the category to allow recording when
-    // device is locked or ring/silent switch engaged
-    // PATCHED BY LOKO
-    https
-        : // stackoverflow.com/questions/31881565/cordova-media-plugin-breaks-html5-audio-tag-on-ios
+      // get the audioSession and set the category to allow recording when
+      // device is locked or ring/silent switch engaged
+      // PATCHED BY LOKO
+      // https://stackoverflow.com/questions/31881565/cordova-media-plugin-breaks-html5-audio-tag-on-ios
+
       if ([self hasAudioSession]) {
         if (![self.avSession.category
                 isEqualToString:AVAudioSessionCategoryPlayAndRecord]) {
-          -[self.avSession setCategory:AVAudioSessionCategoryRecord error:nil];
-          +[self.avSession
+          [self.avSession
               setCategory:AVAudioSessionCategoryPlayAndRecord
               withOptions:AVAudioSessionCategoryOptionMixWithOthers |
                           AVAudioSessionCategoryOptionDefaultToSpeaker
