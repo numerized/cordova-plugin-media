@@ -764,7 +764,6 @@ BOOL keepAvAudioSessionAlwaysActive = NO;
       // get the audioSession and set the category to allow recording when
       // device is locked or ring/silent switch engaged
       // PATCHED BY LOKO
-      // https://stackoverflow.com/questions/31881565/cordova-media-plugin-breaks-html5-audio-tag-on-ios
 
       if ([self hasAudioSession]) {
         if (![self.avSession.category
