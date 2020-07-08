@@ -880,7 +880,7 @@ BOOL keepAvAudioSessionAlwaysActive = NO;
            mediaId:mediaId
              param:[self createAbortError:errorMsg]];
   }
-}
+}]
 }
 
 - (void)stopRecordingAudio:(CDVInvokedUrlCommand *)command {
