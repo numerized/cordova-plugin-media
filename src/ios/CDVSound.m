@@ -738,6 +738,7 @@ BOOL keepAvAudioSessionAlwaysActive = NO;
 }
 
 - (void)startRecordingAudio:(CDVInvokedUrlCommand *)command {
+  [self.commandDelegate runInBackground:^{
   NSString *callbackId = command.callbackId;
 
 #pragma unused(callbackId)
@@ -879,6 +880,7 @@ BOOL keepAvAudioSessionAlwaysActive = NO;
            mediaId:mediaId
              param:[self createAbortError:errorMsg]];
   }
+}
 }
 
 - (void)stopRecordingAudio:(CDVInvokedUrlCommand *)command {
